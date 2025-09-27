@@ -14,12 +14,11 @@ Explore una demostración funcional de la aplicación haciendo clic en el siguie
 
 [![🚀 Visitar App](https://img.shields.io/badge/Visitar_App-brightgreen?style=for-the-badge&logo=appveyor)](https://my-blog-1-7r7j.onrender.com/)
 
-## Credenciales de prueba:
 
-Puedes usar estas credenciales para iniciar sesión y explorar todas las funciones.
-
+## Puedes usar estas credenciales para iniciar sesión y explorar todas las funciones.
 
 Usuario: Demo Usuario
+
 Contraseña: demo1284
 
 O bien, crea tu propia cuenta registrándote para acceder a todas las funciones.

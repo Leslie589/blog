@@ -1,9 +1,7 @@
 # Blogs
 
-Este proyecto es una aplicación web de blog desarrollada con tecnologías modernas, que permite a los usuarios registrarse, iniciar sesión y gestionar publicaciones (crear, editar y eliminar) de manera segura y eficiente.
-
-El sistema está dividido en dos partes claramente definidas: un backend que provee una API RESTful para la gestión de datos y autenticación, y un frontend interactivo desarrollado con React para una experiencia de usuario fluida y responsiva.
-The application integrates two external APIs to provide up-to-date and reliable content:
+Esta es una aplicación web tipo blog que permite a los usuarios registrarse, iniciar sesión y gestionar publicaciones (crear, editar, eliminar) de forma segura.
+El proyecto se compone de un backend con API RESTful (Node.js, Express, MySQL) y un frontend en React como SPA responsiva
 
 - **Backend:** API RESTful con Node.js, Express y MySQL.
 - **Frontend:** SPA React con UI responsiva, editor enriquecido y gestión completa de posts.
@@ -14,10 +12,17 @@ The application integrates two external APIs to provide up-to-date and reliable 
 
 Explore una demostración funcional de la aplicación haciendo clic en el siguiente enlace:
 
-
 [![🚀 Visitar App](https://img.shields.io/badge/Visitar_App-brightgreen?style=for-the-badge&logo=appveyor)](https://my-blog-1-7r7j.onrender.com/)
 
+## Credenciales de prueba:
 
+Puedes usar estas credenciales para iniciar sesión y explorar todas las funciones.
+
+
+Usuario: Demo Usuario
+Contraseña: demo1284
+
+O bien, crea tu propia cuenta registrándote para acceder a todas las funciones.
 
 ---
 
@@ -25,86 +30,68 @@ Explore una demostración funcional de la aplicación haciendo clic en el siguie
 
 ### 🏠 Home
 - Pantalla principal donde se muestran todas las categorías disponibles para publicar y explorar contenido.
-  
-**Además, en esta pantalla se encuentra:**
-- El botón para publicar nuevo contenido.
-- El enlace para acceder al inicio de sesión.
-  
+- Acceso rápido a publicación y login.
 
 ### ✍️ Publicar 
-- Página donde los usuarios registrados pueden crear y publicar nuevos posts.
-- El editor es enriquecido (React Quill) y permite agregar texto, imágenes y formato.
-- Restricción: Para acceder a la sección de publicar y crear contenido, es obligatorio iniciar sesión.
-- Si el usuario no está autenticado, será redirigido al login o verá un mensaje para iniciar sesión.
-
+- Página para crear posts (con editor enriquecido).
+- Requiere inicio de sesión; redirige si no estás autenticado.
 
 ### 🔐 Inicio de sesión
-La página de inicio de sesión permite al usuario autenticarse para acceder a funciones avanzadas de la aplicación.
-
-**Una vez iniciado sesión, el usuario podrá:**
-- Publicar nuevas publicaciones.
-- Editar o eliminar sus publicaciones existentes, identificadas mediante JWT y su ID.
-- Ver un mensaje de bienvenida con su nombre de usuario en el navbar.
-- Cerrar sesión desde la misma interfaz de navegación.
-
+- Autenticación para acceder a funciones como publicar, editar y eliminar posts.
+- Navbar muestra saludo y opción para cerrar sesión.
 
 ### 📝 Registrarse 
-Si el usuario no tiene una cuenta, puede registrarse fácilmente desde la aplicación.
 
-**Una vez registrado, podrá:**
-- Publicar nuevas publicaciones.
-- Editar o eliminar sus propias publicaciones posteriormente, gracias a la autenticación mediante JWT y su ID.
+- Registro rápido para nuevos usuarios.
+- Permite gestionar publicaciones tras autenticarse.
 
 ---
 
 ## 💡 Características y aspectos destacados
 
-- 🔐 Autenticación con inicio de sesión: Solo los usuarios autenticados pueden crear publicaciones.
-- 🕒 Tiempos visibles: Cada publicación muestra la fecha y hora en la que fue publicada.
-- 🧾 Publicar contenido: Los usuarios registrados pueden subir nuevas publicaciones (texto, imágenes, etc.)
-- ✏️ Edición limitada al autor: Solo el autor original de una publicación puede editarla.
-- 🗑️ Eliminación segura: Los usuarios pueden eliminar únicamente sus propias publicaciones.
-- 🙋‍♂️ Bienvenida personalizada: Al iniciar sesión, el navbar muestra un saludo personalizado con el nombre del usuario.
-- 🚪 Opción para cerrar sesión: Accesible desde la barra de navegación para terminar la sesión en cualquier momento.
+- 🔐 Implementación de autenticación con JWT y seguridad con bcrypt.
+- 🕒 Las publicaciones muestran fecha y hora.
+- 🧾 Uso de React Quill como editor enriquecido.
+- ✏️ Edición limitada al autor.
+- 🗑️ Eliminación limitada al autor.
+- ☁️ Subida y gestión de imágenes con Cloudinary + Multer.
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-### Backend
+### 🛠️ Backend
 
-| Tecnología       | Descripción                                                                                     |
-|------------------|-------------------------------------------------------------------------------------------------|
-| **Node.js & Express**   | Plataforma y framework para construir la API RESTful, manejando rutas, middlewares y lógica.      |
-| **MySQL2**        | Cliente MySQL para conectar y manejar la base de datos relacional.                              |
-| **jsonwebtoken (JWT)** | Para crear y validar tokens seguros que autentican a los usuarios.                             |
-| **bcryptjs**      | Librería para hashear y validar contraseñas, asegurando almacenamiento seguro.                  |
-| **multer**        | Middleware para manejar la subida de archivos (imágenes) desde el frontend.                     |
-| **cloudinary**    | Servicio en la nube para almacenar y servir imágenes de forma eficiente y escalable.            |
-| **nodemailer**    | Para enviar correos electrónicos, usado en notificaciones y recuperación de cuenta.             |
-| **dotenv**        | Carga variables de entorno desde un archivo `.env` para mantener secretos fuera del código.     |
-| **cors**          | Middleware para habilitar el intercambio de recursos entre distintos orígenes (CORS).           |
-| **cookie-parser** | Analiza cookies en las peticiones para manejar sesiones o datos almacenados en cookies.        |
-| **nodemon**       | Herramienta para reiniciar automáticamente el servidor en desarrollo tras cambios en el código.|
-| **streamifier**   | Convierte buffers en streams, usado para subir archivos a Cloudinary. 
-
-
+| Tecnología         | Descripción breve                                          |
+|--------------------|------------------------------------------------------------|
+| **Node.js & Express** | API RESTful, manejo de rutas y lógica del servidor.         |
+| **MySQL2**          | Conexión y gestión de base de datos relacional.   
+| **Aiven (MySQL)**   |Servicio cloud utilizado para producción con conexión segura vía SSL.|
+| **JWT**             | Autenticación mediante tokens seguros.                     |
+| **bcryptjs**        | Encriptación de contraseñas.                               |
+| **Multer**          | Subida de imágenes desde el frontend.                      |
+| **Cloudinary**      | Almacenamiento y entrega de imágenes en la nube.          |
+| **Nodemailer**      | Envío de emails (recuperación, notificaciones).            |
+| **dotenv**          | Variables de entorno seguras.                             |
+| **CORS**            | Permite solicitudes entre frontend y backend.              |
+| **cookie-parser**   | Lectura y manejo de cookies.                              |
+| **Nodemon**         | Recarga automática en desarrollo.                         |
+| **Streamifier**     | Conversión de buffers a streams para subir imágenes.      |
 
 ### Frontend
 
-| Tecnología             | Descripción                                                                                   |
-|------------------------|-----------------------------------------------------------------------------------------------|
-| **React 18**           | Librería para construir la interfaz de usuario como una SPA (Single Page Application).       |
-| **react-router-dom**   | Maneja el enrutamiento en el cliente para navegación entre páginas sin recargar.              |
-| **axios**              | Cliente HTTP para consumir la API backend de forma sencilla y eficiente.                      |
-| **react-quill**        | Editor WYSIWYG para crear y editar posts con formato enriquecido (negrita, listas, imágenes). |
-| **sass & sass-loader** | Preprocesador CSS para escribir estilos más organizados y mantenibles.                        |
-| **sweetalert2**        | Librería para mostrar alertas y modales visualmente atractivos y configurables.               |
-| **moment.js**          | Manipulación y formato sencillo de fechas y tiempos.                                         |
-| **react-icons**        | Conjunto de iconos para mejorar la UI con iconografía clara y visual.                         |
-| **html-react-parser**  | Permite interpretar HTML dentro de componentes React de forma segura y dinámica.             |
-| **@testing-library/react** | Herramienta para pruebas unitarias y de integración en componentes React.                   |
-| **@testing-library/jest-dom** | Extensiones para Jest que facilitan assertions más legibles en tests de DOM.           |
-| **@testing-library/user-event** | Simula eventos de usuario en pruebas para validar comportamiento.                      |
+| Tecnología             | Descripción                                                   |
+|-----------------------|---------------------------------------------------------------|
+| **React 18**          | Librería para construir la interfaz como SPA.                |
+| **react-router-dom**   | Enrutamiento para navegación sin recargar.                    |
+| **axios**             | Cliente HTTP para consumir la API backend.                    |
+| **react-quill**       | Editor enriquecido para crear y editar posts.                 |
+| **sass & sass-loader**| Preprocesador CSS para estilos organizados.                   |
+| **sweetalert2**       | Librería para alertas y modales atractivos.                   |
+| **moment.js**         | Formateo y manejo sencillo de fechas.                         |
+| **react-icons**       | Iconos para mejorar la interfaz visualmente.                  |
+| **html-react-parser** | Interpretación segura de HTML en componentes React.           |
+
+
 ---
 
 ## ⚙️ Instalación y ejecución de la aplicación

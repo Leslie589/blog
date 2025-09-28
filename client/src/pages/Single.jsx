@@ -83,7 +83,13 @@ const Single = () => {
   return (
     <div className="single">
       <div className="content">
-
+        
+{/* 🔹 CATEGORÍA DEL POST ARRIBA DEL TÍTULO */}
+      {post.cat && (
+        <div className="post-category">
+          <span>{post.cat.toUpperCase()}</span>
+        </div>
+      )}
         {/* Imagen principal del post (si existe) */}
         {post.img && (
      <img src={post.img} alt="Imagen del post" />
@@ -119,12 +125,7 @@ const Single = () => {
             </div>
           )}
         </div>
-{/* 🔹 CATEGORÍA DEL POST ARRIBA DEL TÍTULO */}
-      {post.cat && (
-        <div className="post-category">
-          <span>{post.cat.toUpperCase()}</span>
-        </div>
-      )}
+
         {/* Título del post */}
         <h1>{post.title}</h1>
 

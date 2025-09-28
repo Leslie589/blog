@@ -119,7 +119,12 @@ const Single = () => {
             </div>
           )}
         </div>
-
+{/* 🔹 CATEGORÍA DEL POST ARRIBA DEL TÍTULO */}
+      {post.cat && (
+        <div className="post-category">
+          <span>{post.cat.toUpperCase()}</span>
+        </div>
+      )}
         {/* Título del post */}
         <h1>{post.title}</h1>
 

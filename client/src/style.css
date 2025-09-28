@@ -451,6 +451,14 @@ html, body {
     flex: none;
     gap: 20px;
   }
+  .app .container .single .content .post-category {
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4c05;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
   .app .container .single .content img {
     width: 100%;
     border-radius: 8px;

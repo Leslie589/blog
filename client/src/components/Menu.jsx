@@ -48,7 +48,13 @@ const Menu = ({ cat, currentPostId }) => {
       {posts.map(post => (
         <div className="post" key={post.id}>
           {/* Imagen del post (si tiene) */}
-          <img src={`../upload/${post?.img}`} alt="" />
+           {post.img && (
+            <img 
+              src={post.img} // Aquí post.img ya debería ser la URL completa de Cloudinary
+              alt=""
+            />
+          )}
+         {/**  <img src={`../upload/${post?.img}`} alt="" />*/}
 
           {/* Título del post */}
           <h2>{post.title}</h2>

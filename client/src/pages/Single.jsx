@@ -1,4 +1,3 @@
-// Importaciones necesarias desde React y otras librerías
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../context/authContext";
@@ -11,10 +10,9 @@ import Swal from 'sweetalert2';
 import Edit from '../img/edit.png';
 import Delete from '../img/delete.png';
 
-// URL base de la API
 const baseURL = process.env.REACT_APP_API_URL || "";
 
-// Map para mostrar categorías en español
+// Map para mostrar nombres “bonitos” de las categorías
 const categoryNames = {
   art: "Arte",
   science: "Ciencia",
@@ -25,24 +23,17 @@ const categoryNames = {
 };
 
 const Single = () => {
-  // Estado para guardar los datos del post actual
-  const [post, setPost] = useState(null);// Inicializa como null para detectar si ya se cargó
- // Hooks de React Router para obtener la ruta actual y redireccionar
+  const [post, setPost] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Extrae el ID del post desde la URL, ejemplo: /post/123 -> "123"
-  const postId = location.pathname.split("/")[2];
-
-  // Obtiene el usuario actual desde el contexto de autenticación
   const { currentUser } = useContext(AuthContext);
 
+  const postId = location.pathname.split("/")[2];
 
   // Extrae la categoría desde la query string
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get("cat");
 
-// useEffect para obtener los datos del post cuando el componente se monta o cambia el ID
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,12 +46,10 @@ const Single = () => {
     fetchData();
   }, [postId]);
 
-  // Scroll al inicio al cambiar de post
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [postId]);
 
-  // Función para eliminar post
   const handleDelete = async () => {
     try {
       const res = await axios.delete(`${baseURL}/api/posts/${postId}`, { withCredentials: true });
@@ -81,25 +70,22 @@ const Single = () => {
 
   if (!post) return <p>Cargando publicación...</p>;
 
-  // Determina la categoría a mostrar: la del post o la de la URL, en español
-  const categoryKey = post.cat || categoryFromURL;
-  const categoryToShow = categoryNames[categoryKey] || categoryKey;
+  // Categoría “bonita” para mostrar arriba
+  const displayCategory = categoryNames[categoryFromURL] || post.cat || categoryFromURL;
 
   return (
     <div className="single">
       <div className="content">
 
-        {/* 🔹 CATEGORÍA ARRIBA DEL TÍTULO */}
-        {categoryToShow && (
+        {/* 🔹 Categoría arriba del título */}
+        {displayCategory && (
           <div className="post-category">
-            <span>{categoryToShow.toUpperCase()}</span>
+            <span>{displayCategory.toUpperCase()}</span>
           </div>
         )}
 
-        {/* Imagen principal */}
         {post.img && <img src={post.img} alt="Imagen del post" />}
 
-        {/* Información del usuario */}
         <div className="user">
           {post.userImg && <img src={post.userImg} alt="Imagen de usuario" />}
           <div className="info">
@@ -117,16 +103,15 @@ const Single = () => {
           )}
         </div>
 
-        {/* Título y contenido */}
         <h1>{post.title}</h1>
-        {/* Contenido del post interpretado desde HTML */}
+
         <div className="post-body">
           {typeof post.desc === "string" ? parse(post.desc) : null}
         </div>
       </div>
 
-      {/* Menú o posts relacionados */}
-      <Menu cat={post.cat} currentPostId={post.id} />
+      {/* Menú recibe la categoría original para filtrar correctamente */}
+      <Menu cat={categoryFromURL || post.cat} currentPostId={post.id} />
     </div>
   );
 };

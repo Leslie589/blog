@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react';
 // Importamos Link para navegar entre rutas sin recargar la página
 import { Link } from 'react-router-dom';
 
+const baseURL = process.env.REACT_APP_API_URL || "";
+
 // Componente Menu recibe dos props:
 // - cat: la categoría del post actual
 // - currentPostId: el ID del post actual, para evitar mostrarlo en la lista
@@ -20,7 +22,8 @@ const Menu = ({ cat, currentPostId }) => {
     const fetchData = async () => {
       try {
         // Petición al backend para obtener los posts filtrados por categoría
-        const res = await axios.get(`/posts/?cat=${cat}`);
+        //const res = await axios.get(`/posts/?cat=${cat}`);
+        const res = await axios.get(`${baseURL}/api/posts/?cat=${cat}`);
 
         // Filtramos para excluir el post actual (para que no se muestre a sí mismo)
         const filteredPosts = res.data.filter(post => post.id !== currentPostId);
@@ -51,8 +54,7 @@ const Menu = ({ cat, currentPostId }) => {
            {post.img && (
             <img 
               src={post.img} // Aquí post.img ya debería ser la URL completa de Cloudinary
-              alt=""
-            />
+              alt="" />
           )}
          {/**  <img src={`../upload/${post?.img}`} alt="" />*/}
 

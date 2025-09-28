@@ -25,19 +25,24 @@ const categoryNames = {
 };
 
 const Single = () => {
-  const [post, setPost] = useState(null);
+  // Estado para guardar los datos del post actual
+  const [post, setPost] = useState(null);// Inicializa como null para detectar si ya se cargó
+ // Hooks de React Router para obtener la ruta actual y redireccionar
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Extrae el ID del post desde la URL, ejemplo: /post/123 -> "123"
+  const postId = location.pathname.split("/")[2];
+
+  // Obtiene el usuario actual desde el contexto de autenticación
   const { currentUser } = useContext(AuthContext);
 
-  // Extrae el ID del post desde la URL
-  const postId = location.pathname.split("/")[2];
 
   // Extrae la categoría desde la query string
   const searchParams = new URLSearchParams(location.search);
   const categoryFromURL = searchParams.get("cat");
 
-  // Fetch del post
+// useEffect para obtener los datos del post cuando el componente se monta o cambia el ID
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -114,13 +119,14 @@ const Single = () => {
 
         {/* Título y contenido */}
         <h1>{post.title}</h1>
+        {/* Contenido del post interpretado desde HTML */}
         <div className="post-body">
           {typeof post.desc === "string" ? parse(post.desc) : null}
         </div>
       </div>
 
       {/* Menú o posts relacionados */}
-      <Menu cat={categoryKey} currentPostId={post.id} />
+      <Menu cat={post.cat} currentPostId={post.id} />
     </div>
   );
 };

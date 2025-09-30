@@ -279,10 +279,8 @@ body {
           font-size: 21px;
           font-style: oblique;
           font-weight: bold;
-          margin-top: 15px;
-
-
           margin-top: 60px;
+          margin-bottom: 40px;          
 
           span {
             cursor: pointer;
@@ -370,8 +368,8 @@ body {
     }
 
     @media (max-width: 768px) {
+       .home {
       padding: 0 30px;
-
       .posts {
 
         gap: 60px;
@@ -423,7 +421,7 @@ body {
         }
       }
     }
-
+  }
 
 
     // SINGLE
@@ -566,11 +564,11 @@ body {
 
  @media (max-width: 768px) {
   .single {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
+    padding: 15px;
 
     .content {
       flex: none;

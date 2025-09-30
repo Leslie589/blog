@@ -78,7 +78,7 @@ const displayCategory = categoryNames[normalizedCat] || "Categoría desconocida"
     <div className="single">
       <div className="content">
 
-        {/* 🔹 Categoría en español arriba del título */}
+        {/* Categoría en español arriba del título */}
         {displayCategory && (
           <div className="post-category">
             <span>{displayCategory.toUpperCase()}</span>

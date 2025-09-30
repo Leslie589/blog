@@ -42,35 +42,42 @@ import axios from "axios"; // Cliente HTTP para consumir API
   };
 
   return (
-    <div className="home">
-      <div className="posts">
-        {posts.map((post) => (
-          <div className="post" key={post.id}>
-            {/* Imagen del post */}
-            <div className="img">
-             <img src={post.img} alt={post.title} />
-            </div>
 
-            {/* Contenido del post */}
+  <div className="home">
+    <div className="posts">
+      {posts.length > 0 ? (
+        posts.map((post) => (
+          <div className="post" key={post.id}>
+            <div className="img">
+              <img src={post.img} alt={post.title} />
+            </div>
             <div className="content">
-              {/* Título del post enlazado a su detalle */}
               <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
-
-              {/* Resumen del contenido */}
               <p className="post-desc">{getSummary(post.desc)}</p>
-
-              {/* Botón para leer más */}
               <Link className="link" to={`/post/${post.id}`}>
                 <button>Leer más..</button>
               </Link>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      ) : (
+        <div className="no-posts-message">
+          <h2>No hay publicaciones en esta categoría.</h2>
+          <p>
+            ¿Quieres ser el primero en publicar?{" "}
+            <Link to="/login" className="login-link">
+              Inicia sesión
+            </Link>{" "}
+            para publicar contenido.
+          </p>
+        </div>
+      )}
     </div>
-  );
-};
+  </div>
+);
+
+  };
 
 export default Home;

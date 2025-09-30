@@ -564,110 +564,108 @@ body {
 
     }
 
-    @media (max-width: 768px) {
-      .single {
-        margin-top: 30px;
+ @media (max-width: 768px) {
+  .single {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+
+    .content {
+      flex: none;
+      gap: 20px;
+
+      .post-category {
+        font-size: 37px;
+        font-weight: bold;
+        text-align: center;
+        color: #055dff;
+        text-transform: capitalize;
+        font-family: 'Times New Roman', Times, serif;
+        letter-spacing: 1px;
+        border-bottom: 3px solid #ff6600;
+        padding-bottom: 5px;
+        display: inline-block;
+      }
+
+      img {
+        width: 100%;
+        height: 500px;
+        border-radius: 8px;
+        object-fit: contain;
+        margin-bottom: 15px;
+      }
+
+      h1 {
+        font-size: 26px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      p {
+        line-height: 22px;
+      }
+
+      .user {
+        gap: 18px;
+
+        img {
+          width: 54px;
+          height: 54px;
+          object-fit: cover;
+          object-position: center center;
+          border-radius: 50%;
+        }
+      }
+
+      .edit {
         display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
+        gap: 15px;
 
-        .content {
-          flex: none;
-          gap: 20px;
-          
-        .post-category {
-          font-size: 37px;
-          font-weight: bold;
-          text-align: center;
-          color: #055dff;
-          text-transform: capitalize;
-          font-family: 'Times New Roman', Times, serif;
-          letter-spacing: 1px;
-          border-bottom: 3px solid #ff6600;
-          padding-bottom: 5px;
-          display: inline-block; 
-                     }
+        img {
+          width: 29px;
+          height: 29px;
+          cursor: pointer;
+        }
+      }
+    } /* Cierra .content */
 
-          img {
-            width: 100%;
-            height: 500px;
-            border-radius: 8px;
-            object-fit: contain;
-            margin-bottom: 15px;
-          }
+    .menu {
+      margin-top: 80px;
+      flex: none;
+      gap: 20px;
+      padding: 0 10px;
 
-          h1 {
-            font-size: 26px;
-            line-height: 1.2;
-            margin-bottom: 10px;
-          }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
 
-          p {
-            line-height: 22px;
+      .post {
+        gap: 10px;
 
-          }
-
-          .user {
-            gap: 18px;
-
-            img {
-              width: 54px;
-              height: 54px;
-              object-fit: cover;
-              object-position: center center; 
-               border-radius: 50%;
-
-            }
-
-          }
-
-          .edit {
-            display: flex;
-            gap: 15px;
-
-            img {
-              width: 29px;
-              height: 29px;
-              cursor: pointer;
-            }
-          }
+        img {
+          width: 100%;
+          height: 120px;
+          border-radius: 6px;
+          object-fit: cover;
         }
 
-        .menu {
-          margin-top: 80px;
-          flex: none;
-          gap: 20px;
-          padding: 0 10px;
+        h2 {
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
 
-          h1 {
-            font-size: 20px;
-            margin-bottom: 16px;
-          }
-
-          .post {
-            gap: 10px;
-
-            img {
-              width: 100%;
-              height: 120px;
-              border-radius: 6px;
-              object-fit: cover;
-            }
-
-            h2 {
-              font-size: 16px;
-              margin-bottom: 5px;
-            }
-
-            button {
-              font-size: 14px;
-              padding: 6px 12px;
-            }
-          }
+        button {
+          font-size: 14px;
+          padding: 6px 12px;
         }
       }
     }
+  } /* Cierra .single */
+} /* Cierra @media */
+
 
 
     // WRITE (Sección para crear contenido)

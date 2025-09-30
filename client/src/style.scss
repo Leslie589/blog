@@ -298,6 +298,49 @@ body {
         flex-direction: column;
         gap: 60px;
 
+        .no-posts-message {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: #fefefe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #222;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 0;
+
+    .login-link {
+      color: #007BFF;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 2px solid #007BFF;
+      }
+    }
+  }
+}
+
         .post {
           display: flex;
           gap: 50px;

@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "sass": "^1.80.4",
+    "sass-loader": "^16.0.2"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "react-icons": "^5.5.0",
+    "react-quill": "^2.0.0"
+  }
+}

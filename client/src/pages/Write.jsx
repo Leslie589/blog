@@ -43,14 +43,20 @@ const Write = () => {
     e.preventDefault(); // Evita el comportamiento por defecto del formulario
 
        if (!user) {
-   Swal.fire({
-          icon: 'warning',
-          title: 'Acceso requerido.',
-          text: "Debes iniciar sesión para publicar.",
-          timer: 3000,
-          showConfirmButton: true,
-          
-        });
+Swal.fire({
+  icon: 'warning',
+  title: '¡Ups! 😅',
+  text: 'Necesitas iniciar sesión para poder publicar tu contenido.',
+  confirmButtonText: 'Iniciar sesión',
+  showCancelButton: true,
+  cancelButtonText: 'Cancelar',
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = '/login'; // Cambia la ruta si es necesario
+  }
+});
+
+
     
     
     return;

@@ -294,6 +294,20 @@ body {
 
     //HOME
     .home {
+
+        .post-category {
+          margin: 15px 0;
+          font-size: 40px;
+          font-weight: bold;
+          text-align: center;
+          color: #055dff;
+          text-transform: capitalize;
+          font-family: 'Times New Roman', Times, serif;
+          letter-spacing: 1px;
+          border-bottom: 3px solid #ff6600;
+          padding-bottom: 5px;
+          display: inline-block; 
+        }
       .posts {
         margin-top: 20px;
         display: flex;
@@ -414,6 +428,19 @@ body {
 
     @media (max-width: 768px) {
        .home {
+          .post-category {
+          margin: 15px 0;
+          font-size: 40px;
+          font-weight: bold;
+          text-align: center;
+          color: #055dff;
+          text-transform: capitalize;
+          font-family: 'Times New Roman', Times, serif;
+          letter-spacing: 1px;
+          border-bottom: 3px solid #ff6600;
+          padding-bottom: 5px;
+          display: inline-block; 
+        }
       padding: 0 30px;
       .posts {
 
